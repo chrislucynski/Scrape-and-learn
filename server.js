@@ -1,6 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const exphbs = require('express-handlebars')
+const mongoose = require("mongoose");
 
 // var db = require("./models");
 // import {routes} from './routes/routes'; 
@@ -9,6 +10,9 @@ var PORT = 3000;
 var app = express();
 
 require('./routes/routes')(app)
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scrapeApp";
+var db = mongoose.connect(MONGODB_URI);
 
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
