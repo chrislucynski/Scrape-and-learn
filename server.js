@@ -1,9 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
-const exhb = require('express-handlebars')
-const routes = require('./routes/routes')
+const exphbs = require('express-handlebars')
 
-// Require all models
 // var db = require("./models");
 // import {routes} from './routes/routes'; 
 
@@ -16,6 +14,10 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 // Start the server
 app.listen(PORT, function() {

@@ -3,12 +3,14 @@ const app = express();
 const axios = require("axios");
 const cheerio = require("cheerio");
 const db = require('../models')
+const path = require('path')
 
 // Routes
 module.exports = function (app){
   app.get('/', (req, res) => {
     // console.log("Oh shit, it's working...It's WORKING!" + req.body)
-    res.send("Oh shit, it's working...It's WORKING!")
+    res.send("Oh Shit!")
+    // res.json(path.join(__dirname, "main.handlebars"))
   })
   // A GET route for scraping the echoJS website
   app.get("/scrape", function(req, res) {
