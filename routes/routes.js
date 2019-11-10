@@ -2,12 +2,12 @@ const express = require("express");
 const app = express();
 const axios = require("axios");
 const cheerio = require("cheerio");
-const db = require('../config/connection')
+const db = require('../models')
 
 // Routes
 module.exports = function (app){
   app.get('/', (req, res) => {
-    console.log("Oh shit, it's working...It's WORKING!" + req.body)
+    // console.log("Oh shit, it's working...It's WORKING!" + req.body)
     res.send("Oh shit, it's working...It's WORKING!")
   })
   // A GET route for scraping the echoJS website
@@ -36,27 +36,22 @@ module.exports = function (app){
         //     .catch(err => console.log(err));
         res.send(result);
         });
-    
-        // Send a message to the client
       });
   });
     
   // Route for getting all Articles from the db
   app.get("/articles", (req, res) => {
   // TODO: Finish the route so it grabs all of the articles
-  db.article.find({})
-      .then(dbArticle => res.json(dbArticle))
+  db.Article.find({})
+      .then(dbArticle => console.log(dbArticle))
       .catch(err => res.json(err))
   });
     
   // Route for grabbing a specific Article by id, populate it with it's note
   app.get("/articles/:id", function(req, res) {
-  // TODO
-  // ====
-  // Finish the route so it finds one article using the req.params.id,
-  // and run the populate method with "note",
-  // then responds with the article with the note included
-  db.article.findOne({_id: req.params.id})
+  // finds one article using the req.params.id, and run the populate method 
+  // with "note", then responds with the article with the note included
+  db.Article.findOne({_id: req.params.id})
       .populate('note')
       .then(dbArticle => res.json(dbArticle))
       .catch(err => res.sendStatus(500))
