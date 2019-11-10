@@ -6,13 +6,13 @@ const mongoose = require("mongoose");
 // var db = require("./models");
 // import {routes} from './routes/routes'; 
 
-var PORT = 3000;
-var app = express();
+const PORT = process.env.PORT || 3000;
+const app = express();
 
 require('./routes/routes')(app)
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scrapeApp";
-var db = mongoose.connect(MONGODB_URI);
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scrapeApp";
+const db = mongoose.connect(MONGODB_URI);
 
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
