@@ -1,0 +1,10 @@
+#jumbo-body {
+    background-image: url('../images/hospital-room.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+ 
+p {
+    background-color: black;
+}

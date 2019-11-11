@@ -1,39 +1,27 @@
 // changing favorite value from true-false and false-to
-$("#favorite").click(e => {
+$('.saved').click(e => {
   e.preventDefault();
-  console.log("favorite target");
-  console.log(e.target.id);
+  console.log("save target");
+  let targetId = e.target.id
+  console.log(targetId);
   $.ajax({
     method: "PUT",
-    url: `/articles/${e.target.id}`
+    url: `/articles/${targetId}`
   }).then(result => {
-    //    if({{favorite}}) {
-    //         return this.favorite = false
-    //     } else {
-    //         return this.favorite = true
-    //     }
-    // console.log(this.favorite);
+    console.log(result)
+       if(this.save) {
+            return this.save = false
+        } else {
+            return this.save = true
+        }
+    console.log(this.save);
 
-    location.reload();
-  });
-});
-
-// delete button
-$("#delete").click(e => {
-  e.preventDefault();
-  console.log("deleting");
-  console.log(e.target.id);
-  $.ajax({
-    type: "DELETE",
-    url: `/articles/${e.target.id}`
-  }).then(result => {
-    console.log(result);
     location.reload();
   });
 });
 
 // Comments button
-$('#comments').click(e => {
+$('.comments').click(e => {
     e.preventDefault()
     console.log('opening up comments')
     console.log(e.target.id)
@@ -51,17 +39,19 @@ $('#comments').click(e => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+// delete button
+// $("#delete").click(e => {
+//   e.preventDefault();
+//   console.log("deleting");
+//   console.log(e.target.id);
+//   $.ajax({
+//     type: "DELETE",
+//     url: `/articles/${e.target.id}`
+//   }).then(result => {
+//     console.log(result);
+//     location.reload();
+//   });
+// });
 
 // $("#add-new-btn").click(e => {
 //   e.preventDefault();
