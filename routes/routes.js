@@ -12,7 +12,7 @@ module.exports = function (app){
     db.Article.find({})
     .then(dbArticle => {
     // console.log(dbArticle)
-    res.render("index", { article: dbArticle })  
+    res.render("home", { article: dbArticle })  
     })
       
     

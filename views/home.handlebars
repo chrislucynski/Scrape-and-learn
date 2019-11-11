@@ -1,0 +1,27 @@
+{{!-- Nav bar will be here --}}
+
+{{!-- Jumbo tron goes here --}}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container" id="jumbo-body">
+    {{!-- Put a background image here --}}
+
+    {{!-- Overlap the image with text --}}
+    <h1 class="display-4">Home Page</h1>
+  </div>
+</div>
+
+
+
+
+{{!-- display articles --}}
+<div class="container" id="main-page">
+  {{#each article}}
+  <div class="container" id="article-div">
+    <h1>Headline: {{this.headline}}</h1>
+    <p>Summary: {{this.summary}}</p>
+    <a class="lead" href="{{this.link}}">View Article</a>
+    <button class="btn btn-primary" id="comments">Comments</button>
+    <button class="btn btn-success" id="favorites">Save Article</button>
+  </div>
+  {{/each}}
+</div>

@@ -1,0 +1,44 @@
+{{!-- Nav Bar will be up here --}}
+
+{{!-- Jumbo tron goes here --}}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container" id="jumbo-body">
+    {{!-- Put a background image here --}}
+
+    {{!-- Overlap the image with text --}}
+    <h1 class="display-4">Home Page</h1>
+  </div>
+</div>
+
+{{#each article}}
+{{#if this.favorite}}
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Article</h4>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title"><strong>Headline: </strong> {{article.headline}}</h5>
+        <p class="card-text"><strong>Summary: </strong>{{article.summary}}</p>
+        <a class="btn btn-primary lead" href="{{article.link}}"><strong>View Article</strong></a>
+        <button class="btn btn-primary" id="comments">Comments</button>
+        <button class="btn btn-secondary" id="favorite">Un-favorite</button>
+        <button class="btn btn-danger" id="delete">Delete</button>
+    </div>
+</div>
+{{/each}}
+
+
+
+{{!-- 
+<div class="container" id="main-page">
+    {{#each article}}
+    <div class="container" id="article-div">
+        <h1>Headline: {{article.headline}}</h1>
+        <p>Summary: {{article.summary}}</p>
+        <a class="btn btn-primary lead" href="{{article.link}}">View Article</a>
+        <button class="btn btn-primary" id="comments">Comments</button>
+        <button class="btn btn-secondary" id="un-favorite">Un-favorite</button>
+        <button class="btn btn-danger" id="delete">Delete</button>
+    </div>
+    {{/each}}
+</div> --}}

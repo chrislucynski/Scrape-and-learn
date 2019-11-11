@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,12 +8,38 @@
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	
-    <title>Burger Town</title>
+
+	<title>Articles on Articles</title>
 </head>
 
 <body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="/">Scrape and Learn</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<button class="btn btn-primary p-1 mr-2">
+						<a class="nav-link text-white lead" href="/">Home <span class="sr-only">(current)</span></a>
+
+					</button>
+				</li>
+				<li class="nav-item">
+					<button class="btn btn-success p-1">
+						<a class="nav-link text-white lead" href="/articles">Saved Articles</a>
+					</button>
+				</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+	</nav>
 	{{{ body }}}
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -23,68 +50,6 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
-
-	<script>
-		$("#add-new-btn").click(e => {
-			e.preventDefault();
-			var newBurger = $('#add-new-input').val().trim()
-			console.log(newBurger)
-			if (newBurger) {
-				$.ajax({
-					method: "POST",
-					url: "/api/burgers",
-					data: {
-						burger_name: newBurger
-					}
-				})
-					.then(result => {
-						console.log(result);
-						location.reload();
-					})
-					.catch(error => console.log(error));
-
-			}
-		})
-
-		$(".devour").click(e => {
-			e.preventDefault()
-			console.log('devour target')
-			console.log(e.target.id);
-			$.ajax({
-				method: "PUT",
-				url: `/api/devour/${e.target.id}`,
-			}).then(result => {
-				console.log(result);
-				location.reload();
-			});
-		});
-
-		$('.order-another').click(e => {
-			e.preventDefault()
-			console.log('order another target')
-			console.log(e.target.id);
-			$.ajax({
-				type: "PUT",
-				url: `/api/reorder/${e.target.id}`,
-			}).then(result => {
-				console.log(result);
-				location.reload();
-			});
-		}); 
-
-		$('.delete').click(e => {
-			e.preventDefault()
-			console.log('deleting')
-			console.log(e.target.id);
-			$.ajax({
-				type: "DELETE",
-				url: `/api/delete/${e.target.id}`,
-			}).then(result => {
-				console.log(result);
-				location.reload();
-			});
-		}); 
-	</script>
 </body>
 
 </html>
