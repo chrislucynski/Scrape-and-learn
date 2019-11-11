@@ -9,17 +9,17 @@ const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-require('./routes/routes')(app)
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scrapeApp";
 const db = mongoose.connect(MONGODB_URI);
 
 app.use(logger("dev"));
+app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"));
 
 
+require('./routes/routes')(app)
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
