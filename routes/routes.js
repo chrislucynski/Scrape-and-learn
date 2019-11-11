@@ -84,18 +84,23 @@ module.exports = function(app) {
       .catch(err => res.sendStatus(500));
   });
 
-  // Route for grabbing a specific Article by id, populate it with it's comment
   app.put("/unsaved/:id", function(req, res) {
-    // finds one article using the req.params.id, and run the populate method
-    // with "comment", then responds with the article with the comment included
     db.Article.updateOne({ _id: req.params.id }, {$set: {saved: false}})
-      // .populate('comment')
       .then(dbArticle => {
         console.log(dbArticle)
-        res.render("home", { article: dbArticle });
+        res.render("saved", { article: dbArticle });
       })
       .catch(err => res.sendStatus(500));
   });
+
+  app.delete('/delete', (req,res) => {
+    db.Article.deleteMany({})
+    .then(dbArticle => {
+      console.log(dbArticle)
+      res.render("home", { article: dbArticle });
+    })
+    .catch(err => res.sendStatus(500));
+  })
 
   app.get("/css/style.css", function(req, res) {
     res.sendFile(path.join(__dirname, "..", "public", "css", "style.css"));

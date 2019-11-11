@@ -45,7 +45,8 @@
 
 			{{!-- Overlap the image with text --}}
 			<h1 class="display-4">Nursing News from Nurse.com</h1>
-			<button class="btn btn-danger" id="scrape-btn">Click to scrape for news</button>
+			<button class="btn btn-info" id="scrape-btn">Click to scrape for news</button>
+			<button class="btn btn-danger" id="clear-btn">Clear all articles</button>
 		</div>
 	</div>
 	{{{ body }}}
@@ -111,6 +112,19 @@
 			$.ajax({
 				type: "GET",
 				url: "/"
+			}).then(result => {
+				console.log(result)
+				location.reload()
+			})
+		})
+
+		$('#clear-btn').click(e => {
+			e.preventDefault()
+			console.log('clearing database')
+			console.log(e.target.id)
+			$.ajax({
+				type: "DELETE",
+				url: "/delete"
 			}).then(result => {
 				console.log(result)
 				location.reload()

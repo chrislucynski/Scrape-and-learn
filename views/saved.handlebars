@@ -5,14 +5,14 @@
 
 {{#each article}}
 {{#if this.saved}}
-<div class="card">
+<div class="card w-75 mb-2">
     <div class="card-header">
         <h4 class="card-title">Article</h4>
     </div>
     <div class="card-body">
         <h5 class="card-title"><strong>Headline: </strong> {{this.headline}}</h5>
         <p class="card-text"><strong>Summary: </strong>{{this.summary}}</p>
-        <a class="btn btn-primary lead" href="{{this.URL}}"><strong>View Article</strong></a>
+        <a class="btn btn-warning" href="{{this.URL}}"><strong>View Article</strong></a>
         <button class="btn btn-primary comments" id="{{this.id}}">Comments</button>
         <button class="btn btn-secondary unsaved" id="{{this.id}}">Un-Save</button>
     </div>
